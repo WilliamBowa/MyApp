@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Portfolio Application
 
-Things you may want to cover:
+> This is a Ruby on Rails 5 Application to create online portfolio
 
-* Ruby version
+### Functionalities
 
-* System dependencies
+- Blog
+- Portfolio
 
-* Configuration
+###  Code Example
 
-* Database creation
+```javascript
+alert('Hello world!');
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```ruby
+def my_test
+    puts 'welcome to my App'
+end
+```
