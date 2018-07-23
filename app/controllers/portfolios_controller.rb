@@ -3,6 +3,7 @@ class PortfoliosController < ApplicationController
         @portfolio_items = Portfolio.all
     end
 
+    #both new and create actions are needed in order to create a new item
     #Create action to create a new instance of class portfolio make availlable to form
     def new
         @portfolio_item = Portfolio.new
@@ -18,6 +19,26 @@ class PortfoliosController < ApplicationController
             format.json { render :show, status: :created, location: @portfolio_item }
           else
             format.html { render :new }
+          end
+        end 
+    end
+
+    #edit action has to have a id of the post to edit
+    def edit
+        #set portfolio_item to be equal to whatever portfolio item is brought back with its id
+        @portfolio_item = Portfolio.find(params[:id])
+    end
+
+    def update
+        @portfolio_item = Portfolio.find(params[:id])
+        
+        respond_to do |format|
+          if @portfolio_item.update(params.require(:portfolio).permit(:title, :subtitle, :body))
+            format.html { redirect_to @portfolios_path, notice: 'Portfolio was successfully updated.' }
+            format.json { render :show, status: :created, location: @portfolio_item }
+            
+          else
+            format.html { render :edit }
           end
         end
     end
