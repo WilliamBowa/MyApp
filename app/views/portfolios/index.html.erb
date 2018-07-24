@@ -1,8 +1,12 @@
 <h1>Portofolio Items</h1>
+<%= link_to "Create a new Item", new_portfolio_path %>
+
 <%= @portfolio_items.each do |item| %>
-    <p><%= item.title%></p>
+    <p><%= link_to item.title, portfolio_path(item)%></p>
     <p><%= item.subtitle%></p>
     <p><%= item.body%></p>
     <p><%= image_tag(item.main_image) unless item.main_image.nil? %></p>
     <p><%= item.created_at%></p>
+    <%= link_to "Edit Item", edit_portfolio_path(item.id) %>
+    <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
