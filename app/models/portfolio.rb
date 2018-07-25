@@ -1,4 +1,5 @@
 class Portfolio < ApplicationRecord
+    has_many :technologies
     #validate entries into database
     validates_presence_of :title, :body
 
