@@ -3,6 +3,10 @@ class PortfoliosController < ApplicationController
         @portfolio_items = Portfolio.all
     end
 
+    def angular
+        @portfolio_items = Portfolio.angular
+    end
+
     #both new and create actions are needed in order to create a new item
     #Create action to create a new instance of class portfolio make availlable to form
     def new
