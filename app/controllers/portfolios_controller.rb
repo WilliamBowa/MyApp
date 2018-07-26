@@ -11,12 +11,13 @@ class PortfoliosController < ApplicationController
     #Create action to create a new instance of class portfolio make availlable to form
     def new
         @portfolio_item = Portfolio.new
+        3.times { @portfolio_item.technologies.build  }
     end
 
     #Create action connect the form new record into the database
     def create
-        @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body))
-    
+        @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body, technologies_attributes: [:name]))
+        
         respond_to do |format|
           if @portfolio_item.save
             format.html { redirect_to portfolios_path, notice: 'Portfolio was successfully created.' }
