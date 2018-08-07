@@ -1,12 +1,29 @@
-<h1>Portofolio Items</h1>
-<%= link_to "Create a new Item", new_portfolio_path %>
-
-<%= @portfolio_items.each do |item| %>
-    <p><%= link_to item.title, portfolio_show_path(item)%></p>
-    <p><%= item.subtitle%></p>
-    <p><%= item.body%></p>
-    <p><%= image_tag(item.main_image) unless item.main_image.nil? %></p>
-    <p><%= item.created_at%></p>
-    <%= link_to "Edit Item", edit_portfolio_path(item.id) %>
-    <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+<div class="portfolio-section col-12">
+    <h1 class="text-center portfolio-section__heading">Portfolio Page</h1>
+    <div class="col-5 portfolio-section__one page-details">
+        <span class="page-details__description">PAGE DESCRIPTION</span>
+        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum 
+            deleniti atque corrupti quos dolores et quas molestias excepturi.
+        </p>
+        <span></span>
+            <%= link_to "Create a new Item", new_portfolio_path %>
+        </span>
+    </div>
+    <div class="portfolio-section__two col-6 mx-auto">
+        <%= @portfolio_items.each do |item| %>
+        <div class="portfolio-item">
+            <p class="portfolio-item__title"><%= link_to item.title, portfolio_show_path(item)%></p>
+            <p class="portfolio-item__subtitle"><%= item.subtitle%></p>
+            <p class="portfolio-item__body"><%= item.body%></p>
+            <p class="portfolio-item__image"><%= image_tag(item.main_image) unless item.main_image.nil? %></p>
+            <p class="portfolio-item__date"><%= item.created_at%></p>
+            <p class="portfolio-item__edit">
+                <%= link_to "Edit Item", edit_portfolio_path(item.id) %>
+            </p>
+            <p class="page-details__destroy">
+                <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </p>
+        </div>
+        <% end %>
+    </div>
+</div>
