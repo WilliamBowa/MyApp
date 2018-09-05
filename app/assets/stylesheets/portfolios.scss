@@ -1,8 +1,3 @@
-// Place all the styles related to the Portfolios controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-
 .portfolio-section {
   padding: 5px;
 
@@ -24,10 +19,18 @@
 .page-details {
   margin-bottom: 16px;
 
-  &__description {
+  &__heading {
     font-size: 18px;
     color: black;
     font-weight: bold;
+  }
+
+  &__body {
+    color: black;
+  }
+
+  &__new-link {
+    font-size: 16px;
   }
 
   &__destroy {
@@ -47,6 +50,7 @@
   border: 1px solid gray;
   padding: 16px;
   border-radius: 10px 60px;
+  color: black;
 
   &__title {
     font-size: 24px;
@@ -71,5 +75,11 @@
 
   &__edit {
     margin-bottom: 5px;
+  }
+  
+  &--odd {
+    a {
+      color: gray;
+    }
   }
 }

@@ -1,11 +1,11 @@
 <div class="portfolio-section col-12">
     <h1 class="text-center portfolio-section__heading">Portfolio Page</h1>
     <div class="col-5 portfolio-section__one page-details">
-        <span class="page-details__description">PAGE DESCRIPTION</span>
-        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum 
+        <span class="page-details__heading">PAGE DESCRIPTION</span>
+        <p class="page-details__body">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum 
             deleniti atque corrupti quos dolores et quas molestias excepturi.
         </p>
-        <span></span>
+        <span class="page-details__new-link">
             <%= link_to "Create a new Item", new_portfolio_path %>
         </span>
     </div>
@@ -23,6 +23,9 @@
             <p class="page-details__destroy">
                 <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
             </p>
+        </div>
+        <div class="portfolio-item--odd">
+             <%= link_to item.title, portfolio_show_path(item)%>
         </div>
         <% end %>
     </div>
