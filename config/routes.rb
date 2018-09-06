@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register'}
+
   #overiding the path of the show action of portfolio resource 
   resources :portfolios, expect: [:show]
   get 'portfolio/:id', to: 'portfolios#show', as: 'portfolio_show'
