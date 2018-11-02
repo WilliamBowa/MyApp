@@ -1,13 +1,16 @@
 <div class="portfolio-section col-12">
     <h1 class="text-center portfolio-section__heading">Portfolio Page</h1>
-    <div class="col-5 portfolio-section__one page-details">
-        <span class="page-details__heading">PAGE DESCRIPTION</span>
-        <p class="page-details__body">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum 
-            deleniti atque corrupti quos dolores et quas molestias excepturi.
-        </p>
-        <span class="page-details__new-link">
-            <%= link_to "Create a new Item", new_portfolio_path %>
-        </span>
+    <div class="row col-12">
+        <div class="col-8 portfolio-section__one page-details">
+            <span class="page-details__heading">PAGE DESCRIPTION</span>
+            <p class="page-details__body">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum 
+                deleniti atque corrupti quos dolores et quas molestias excepturi.
+            </p>
+            <span class="page-details__new-link">
+                <%= link_to "Create a new Item", new_portfolio_path %>
+            </span>
+        </div>
+        <div class="btn btn-default col-4 float-right"><%= link_to "Create Achievement", new_achievement_path %></div>
     </div>
     <div class="portfolio-section__two col-6 mx-auto">
         <%= @portfolio_items.each do |item| %>
