@@ -47,6 +47,8 @@ puts "5 skills created"
         thumb_image: "https://placeholdit.co//i/350x200"
     )
   end
+  
+  puts "8 technologies created"
 
   1.times do |portofolio_item|
     Portfolio.create!(

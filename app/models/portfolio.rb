@@ -17,7 +17,7 @@ class Portfolio < ApplicationRecord
     #set default main_image Portfolio is initialized
     after_initialize :set_defaults
 
-    #set default image if record only if it is nill so it won't override the existing images
+    #set default image if record only if it's nill so it won't override the existing images
     def set_defaults
         self.main_image ||= "https://placeholdit.co//i/300x200"
     end

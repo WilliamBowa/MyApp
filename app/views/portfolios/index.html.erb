@@ -14,22 +14,24 @@
     </div>
     <div class="portfolio-section__two col-6 mx-auto">
         <%= @portfolio_items.each do |item| %>
-        <div class="portfolio-item">
-            <p class="portfolio-item__title"><%= link_to item.title, portfolio_show_path(item)%></p>
-            <p class="portfolio-item__subtitle"><%= item.subtitle%></p>
-            <p class="portfolio-item__body"><%= item.body%></p>
-            <p class="portfolio-item__image"><%= image_tag(item.main_image) unless item.main_image.nil? %></p>
-            <p class="portfolio-item__date"><%= item.created_at%></p>
-            <p class="portfolio-item__edit">
-                <%= link_to "Edit Item", edit_portfolio_path(item.id) %>
-            </p>
-            <p class="page-details__destroy">
-                <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </p>
-        </div>
-        <div class="portfolio-item--odd">
-             <%= link_to item.title, portfolio_show_path(item)%>
-        </div>
+    
+
+            <div class="portfolio-item">
+                <p class="portfolio-item__title"><%= link_to item.title, portfolio_show_path(item)%></p>
+                <p class="portfolio-item__subtitle"><%= item.subtitle%></p>
+                <p class="portfolio-item__body"><%= item.body%></p>
+                <p class="portfolio-item__image"><%= image_tag(item.main_image) unless item.main_image.nil? %></p>
+                <p class="portfolio-item__date"><%= item.created_at%></p>
+                <p class="portfolio-item__edit">
+                    <%= link_to "Edit Item", edit_portfolio_path(item.id) %>
+                </p>
+                <p class="page-details__destroy">
+                    <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </p>
+            </div>
+            <div class="portfolio-item--odd">
+                <%= link_to item.title, portfolio_show_path(item)%>
+            </div>
         <% end %>
     </div>
 </div>
