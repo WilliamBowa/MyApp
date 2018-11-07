@@ -1,4 +1,6 @@
 class PortfoliosController < ApplicationController
+    before_action :set_portfolio, only: [:edit, :update, :show, :destroy]
+
     def index
         @portfolio_items = Portfolio.all
     end
@@ -16,7 +18,7 @@ class PortfoliosController < ApplicationController
 
     #Create action connect the form new record into the database
     def create
-        @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body, technologies_attributes: [:name]))
+        @portfolio_item = Portfolio.new(portfolio_params)
         
         respond_to do |format|
           if @portfolio_item.save
@@ -31,14 +33,11 @@ class PortfoliosController < ApplicationController
     #edit action has to have a id of the post to edit
     def edit
         #set portfolio_item to be equal to whatever portfolio item is brought back with its id
-        @portfolio_item = Portfolio.find(params[:id])
     end
 
     def update
-        @portfolio_item = Portfolio.find(params[:id])
-        
         respond_to do |format|
-          if @portfolio_item.update(params.require(:portfolio).permit(:title, :subtitle, :body))
+          if @portfolio_item.update(portfolio_params)
             format.html { redirect_to portfolios_path, notice: 'Portfolio was successfully updated.' }
             format.json { render :show, status: :created, location: @portfolio_item }
           else
@@ -48,12 +47,10 @@ class PortfoliosController < ApplicationController
     end
 
     def show
-        @portfolio_item = Portfolio.find(params[:id])
     end
 
     def destroy
         # Peform the lookup
-        @portfolio_item = Portfolio.find(params[:id])
 
         #Destroy/delete the record
         @portfolio_item.destroy
@@ -62,5 +59,19 @@ class PortfoliosController < ApplicationController
         respond_to do |format|
             format.html { redirect_to portfolios_url, notice: 'Item was successfully destroyed.' }
         end
+    end
+
+    private
+    
+    def portfolio_params
+        params.require(:portfolio).permit(:title,
+                                          :subtitle, 
+                                          :body,
+                                          technologies_attributes: [:name]
+                                        )
+    end
+
+    def set_portfolio
+        @portfolio_item = Portfolio.find(params[:id])
     end
 end
